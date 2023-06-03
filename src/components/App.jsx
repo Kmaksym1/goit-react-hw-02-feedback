@@ -1,35 +1,55 @@
-class Counter extends Component {
-  static defaultProps = {
-    step: 1,
+import { Component } from 'react';
+// import css from './feedback/feedback.module.css';
+
+import { Section } from './section/section.jsx';
+
+
+class App extends Component {
+  state = {
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  };
+  onLeaveFeedback = ({target}) => {
+    this.setState(prevState => ({ [target.name]: prevState[target.name] + 1 }));
+  };
+
+  countTotalFeedback = () => {
+    return this.state.good + this.state.neutral + this.state.bad;
+  };
+  positivePercentage = () => {
+    return Math.round(
+      (this.state.good /
+        (this.state.good + this.state.neutral + this.state.bad)) *
+        100
+    );
   };
 
   render() {
-    const { step } = this.props;
-
     return (
-      <div>
-        <span>0</span>
-        <button type="button">Increment by {step}</button>
-        <button type="button">Decrement by {step}</button>
+      <div
+        style={{
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          fontSize: 40,
+          color: '#010101',
+        }}
+      >
+        <Section title="Please leave feedback"
+          onLeaveFeedback={this.onLeaveFeedback}
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          countTotalFeedback={this.countTotalFeedback()}
+          positivePercentage={this.positivePercentage()}
+        />
+         
+        
       </div>
     );
   }
 }
 
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      <Counter />
-    </div>
-  );
-};
-
+export default App;
