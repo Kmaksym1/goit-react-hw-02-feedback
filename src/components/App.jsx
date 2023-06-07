@@ -1,7 +1,7 @@
 import { Component } from 'react';
-// import css from './feedback/feedback.module.css';
 
 import { Section } from './section/section.jsx';
+
 
 
 class App extends Component {
@@ -45,9 +45,11 @@ class App extends Component {
           countTotalFeedback={this.countTotalFeedback()}
           positivePercentage={this.positivePercentage()}
         />
+        
          
         
       </div>
+
     );
   }
 }
