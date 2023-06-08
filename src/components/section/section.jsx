@@ -1,28 +1,11 @@
 import css from '../feedback/feedback.module.css';
-import { Feedback } from '../feedback/feedback.jsx';
-import { Statistics } from '../statistics/statistics.jsx';
 
-export const Section = ({
-  title,
-  onLeaveFeedback,
-  good,
-  neutral,
-  bad,
-  countTotalFeedback,
-  positivePercentage,
-}) => {
+// import { Statistics } from '../statistics/statistics.jsx';
+
+export const Section = ({ title }) => {
   return (
     <div className={css.mainContainer}>
-      <h4>{title}</h4>
-      <Feedback onLeaveFeedback={onLeaveFeedback} />
-      <h4>Statististics</h4>
-      <Statistics
-        good={good}
-        neutral={neutral}
-        bad={bad}
-        total={countTotalFeedback}
-        positivePercentage={positivePercentage}
-      />
+    <h4>{title}</h4>
     </div>
   );
 };
